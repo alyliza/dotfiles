@@ -1,57 +1,75 @@
-source ~/.config/antigen.zsh
+#
+# ~/.zshrc
+#
 
-# Load the virtualenv and virtualenvwrapper plugins.
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+#
+# PATH
+#
 
-# Load the autojump plugin.
-. /usr/share/autojump/autojump.sh
+typeset -U path PATH
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+path=(
+    "$HOME/.local/bin"
+    "$HOME/.local/share/fnm"
+    "$HOME/go/bin"
+    "/usr/local/go/bin"
+    $path
+)
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle autojump
-antigen bundle colored-man-pages
-antigen bundle command-not-found
-antigen bundle extract
-antigen bundle git
-antigen bundle nmap
-antigen bundle npm
-antigen bundle thefuck
-antigen bundle virtualenv
-antigen bundle virtualenvwrapper
+#
+# Completions
+#
 
-# Bundles from zsh-users repos.
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle zsh-users/zsh-syntax-highlighting
+if [[ -d "$HOME/.local/share/zsh/site-functions" ]]; then
+    fpath=(
+        "$HOME/.local/share/zsh/site-functions"
+        $fpath
+    )
+fi
 
-# Initialize the NVM bundle.
-export NVM_LAZY_LOAD=true
-export NVM_AUTO_USE=true
-antigen bundle lukechilds/zsh-nvm
+#
+# Plugins Loaded First
+#
 
-# Bundles from other repos.
-antigen bundle mrjohannchang/zsh-interactive-cd
+if (( $+commands[fnm] )); then
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
-# Load the theme.
-antigen theme robbyrussell
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+fi
 
-# Apply all settings to Antigen.
-antigen apply
+#
+# Plugins
+#
 
-# Launch Starship prompt.
-eval "$(starship init zsh)"
+ZSH_DISABLE_COMPFIX=false
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=80
+ZSH_AUTOSUGGEST_HISTORY_IGNORE='?(#c80,)'
 
-# Add pipx to PATH
-export PATH="$PATH:/home/a/.local/bin"
+if [[ -r "$HOME/.antidote/antidote.zsh" ]]; then
+    source "$HOME/.antidote/antidote.zsh"
+    antidote load "$HOME/.zsh_plugins"
+fi
 
-# Add Go to PATH
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(go env GOPATH)/bin
+if (( $+commands[pay-respects] )); then
+    eval "$(pay-respects zsh --alias)"
+fi
 
-# Configure Aliases
+if (( $+commands[starship] )); then
+    eval "$(starship init zsh)"
+fi
+
+#
+# Aliases
+#
+
+alias u='sudo apt update;sudo apt upgrade;update-zsh-tools'
 alias i='weechat'
+
+#
+# Keybinds
+#
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
