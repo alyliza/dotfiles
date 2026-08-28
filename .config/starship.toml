@@ -34,7 +34,7 @@ $docker_context\
 $time\
 [](fg:#89b4fa)\
 $line_break\
- [ ┗━](fg:#cba6f7)\
+ [ ](fg:#cba6f7)\
 $character"""
 
 add_newline = true
