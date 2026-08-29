@@ -163,9 +163,9 @@ style = "fg:#1e1e2e bg:#89b4fa"
 format = '[ ♥ $time ]($style)'
 
 [character]
-success_symbol = '[▶](bold fg:#cba6f7)'
-error_symbol = '[▶](bold fg:#cba6f7)'
+success_symbol = '[▶](bold fg:#f5c2e7)'
+error_symbol = '[▶](bold fg:#f5c2e7)'
 vimcmd_symbol = '[❮](bold fg:#a6e3a1)'
 vimcmd_replace_one_symbol = '[❮](bold fg:#f9e2af)'
 vimcmd_replace_symbol = '[❮](bold fg:#f38ba8)'
-vimcmd_visual_symbol = '[❮](bold fg:#cba6f7)'
+vimcmd_visual_symbol = '[❮](bold fg:#f5c2e7)'
