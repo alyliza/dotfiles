@@ -126,21 +126,21 @@ s() {
         return 2
     fi
 
-    local pink=$'\e[38;2;245;194;231m'
-    local mauve=$'\e[38;2;203;166;247m'
+    local starship_mauve=$'\e[38;2;203;166;247m'
+    local starship_pink_sgr='38;2;245;194;231'
     local reset=$'\e[0m'
     local results
 
     results="$(
         fc -l -r 1 "$((HISTCMD - 1))" 2>/dev/null |
-            command env GREP_COLORS='ms=38;2;245;194;231' grep --color=always -iF -- "$query"
+            command env GREP_COLORS="ms=$starship_pink_sgr" grep --color=always -iF -- "$query"
     )" || {
         print -r -- "No history matches for: $query"
         return 1
     }
 
     print -r -- "$results" |
-        command sed -E "s/^([[:space:]]*[0-9]+)/${mauve}\\1${reset}/"
+        command sed -E "s/^([[:space:]]*[0-9]+)/${starship_mauve}\\1${reset}/"
 }
 
 #
