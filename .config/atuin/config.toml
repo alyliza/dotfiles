@@ -1,0 +1,9 @@
+auto_sync = false
+update_check = false
+
+[daemon]
+enabled = true
+autostart = true
+
+[ai]
+enabled = false
