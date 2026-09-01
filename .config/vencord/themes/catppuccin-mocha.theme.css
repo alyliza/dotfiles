@@ -1,0 +1,156 @@
+/**
+ * @name Catppuccin Mocha
+ * @author alyliza
+ * @version 1.0.0
+ * @description A simple Catppuccin Mocha color override for Vesktop/Vencord.
+ */
+
+:root {
+    --ctp-rosewater: #f5e0dc;
+    --ctp-flamingo: #f2cdcd;
+    --ctp-pink: #f5c2e7;
+    --ctp-mauve: #cba6f7;
+    --ctp-red: #f38ba8;
+    --ctp-maroon: #eba0ac;
+    --ctp-peach: #fab387;
+    --ctp-yellow: #f9e2af;
+    --ctp-green: #a6e3a1;
+    --ctp-teal: #94e2d5;
+    --ctp-sky: #89dceb;
+    --ctp-sapphire: #74c7ec;
+    --ctp-blue: #89b4fa;
+    --ctp-lavender: #b4befe;
+
+    --ctp-text: #cdd6f4;
+    --ctp-subtext1: #bac2de;
+    --ctp-subtext0: #a6adc8;
+    --ctp-overlay2: #9399b2;
+    --ctp-overlay1: #7f849c;
+    --ctp-overlay0: #6c7086;
+    --ctp-surface2: #585b70;
+    --ctp-surface1: #45475a;
+    --ctp-surface0: #313244;
+    --ctp-base: #1e1e2e;
+    --ctp-mantle: #181825;
+    --ctp-crust: #11111b;
+
+    /* Accent options: rosewater, flamingo, pink, mauve, red, maroon,
+       peach, yellow, green, teal, sky, sapphire, blue, lavender. */
+    --ctp-accent: var(--ctp-mauve);
+}
+
+.theme-dark,
+.visual-refresh.theme-dark,
+.visual-refresh .theme-dark {
+    /* Current Discord colors */
+    --app-frame-background: var(--ctp-crust);
+    --background-base-lowest: var(--ctp-crust) !important;
+    --background-base-lower: var(--ctp-mantle) !important;
+    --background-base-low: color-mix(in srgb, var(--ctp-base), var(--ctp-mantle) 50%) !important;
+    --background-surface-high: var(--ctp-base) !important;
+    --background-surface-higher: color-mix(in srgb, var(--ctp-base), var(--ctp-surface0) 50%) !important;
+    --background-surface-highest: var(--ctp-surface0) !important;
+    --background-secondary-alt: color-mix(in srgb, var(--ctp-base), var(--ctp-mantle) 50%) !important;
+    --background-accent: var(--ctp-surface1) !important;
+    --bg-surface-raised: var(--ctp-mantle);
+    --home-background: var(--ctp-base);
+    --chat-background: var(--ctp-base);
+    --chat-background-default: var(--ctp-base);
+    --modal-background: var(--ctp-base) !important;
+    --modal-footer-background: var(--ctp-base);
+    --card-background-default: var(--ctp-surface0) !important;
+    --channeltextarea-background: var(--ctp-mantle);
+    --input-background-default: var(--ctp-crust);
+    --background-code: var(--ctp-base);
+
+    --text-default: var(--ctp-text);
+    --text-strong: var(--ctp-text) !important;
+    --text-subtle: var(--ctp-subtext1);
+    --text-muted: var(--ctp-subtext0) !important;
+    --text-link: var(--ctp-accent) !important;
+    --text-brand: var(--ctp-accent);
+    --channels-default: var(--ctp-subtext0) !important;
+    --channel-icon: var(--ctp-subtext0) !important;
+    --channel-text-area-placeholder: var(--ctp-overlay1);
+    --icon-default: var(--ctp-text);
+    --icon-strong: var(--ctp-text);
+    --icon-subtle: var(--ctp-subtext1);
+    --icon-muted: var(--ctp-subtext0) !important;
+    --interactive-icon-default: var(--ctp-text) !important;
+    --interactive-icon-hover: var(--ctp-text);
+    --interactive-icon-active: var(--ctp-text);
+    --interactive-text-default: var(--ctp-text) !important;
+    --interactive-text-hover: var(--ctp-text);
+    --interactive-text-active: var(--ctp-text);
+    --interactive-muted: var(--ctp-overlay0);
+
+    --brand-500: var(--ctp-accent) !important;
+    --brand-530: color-mix(in srgb, var(--ctp-accent), var(--ctp-crust) 8%);
+    --brand-560: color-mix(in srgb, var(--ctp-accent), var(--ctp-crust) 16%);
+    --blurple-50: var(--ctp-accent);
+    --control-brand-foreground: var(--ctp-accent);
+    --control-brand-foreground-new: var(--ctp-accent);
+    --control-primary-background-default: var(--ctp-accent);
+    --control-primary-background-hover: color-mix(in srgb, var(--ctp-accent), var(--ctp-crust) 8%);
+    --control-primary-background-active: color-mix(in srgb, var(--ctp-accent), var(--ctp-crust) 16%);
+    --mention-foreground: var(--ctp-accent);
+    --mention-background: color-mix(in srgb, var(--ctp-accent) 30%, transparent);
+    --message-reacted-background-default: color-mix(in srgb, var(--ctp-accent) 30%, transparent) !important;
+    --message-reacted-text-default: var(--ctp-accent);
+    --message-highlight-background-default: color-mix(in srgb, var(--ctp-accent) 8%, transparent);
+    --message-highlight-background-hover: color-mix(in srgb, var(--ctp-accent) 6%, transparent);
+    --__adaptive-focus-ring-color: var(--ctp-accent);
+
+    --background-mod-muted: color-mix(in srgb, var(--ctp-surface2) 5%, transparent);
+    --background-mod-normal: color-mix(in srgb, var(--ctp-surface2) 15%, transparent);
+    --background-mod-subtle: color-mix(in srgb, var(--ctp-surface2) 25%, transparent) !important;
+    --background-mod-strong: color-mix(in srgb, var(--ctp-surface2) 45%, transparent) !important;
+    --interactive-background-hover: color-mix(in srgb, var(--ctp-overlay2) 15%, transparent);
+    --interactive-background-selected: color-mix(in srgb, var(--ctp-overlay0) 20%, transparent);
+    --interactive-background-active: color-mix(in srgb, var(--ctp-text) 17%, transparent);
+    --border-muted: var(--ctp-surface0);
+    --border-strong: var(--ctp-mantle);
+    --border-normal: var(--ctp-crust);
+    --border-subtle: var(--ctp-base) !important;
+
+    --scrollbar-thin-thumb: var(--ctp-accent);
+    --scrollbar-thin-track: transparent;
+    --scrollbar-auto-thumb: var(--ctp-accent);
+    --scrollbar-auto-track: var(--ctp-crust);
+    --scrollbar-auto-scrollbar-color-thumb: var(--ctp-accent);
+    --scrollbar-auto-scrollbar-color-track: var(--ctp-crust);
+
+    --text-feedback-positive: var(--ctp-green);
+    --text-feedback-critical: var(--ctp-red);
+    --text-feedback-warning: var(--ctp-yellow);
+    --text-feedback-info: var(--ctp-sky);
+    --status-positive: var(--ctp-green);
+    --status-positive-background: var(--ctp-green);
+    --status-warning: var(--ctp-yellow);
+    --status-warning-background: var(--ctp-yellow);
+    --status-danger: var(--ctp-red);
+    --badge-notification-background: var(--ctp-red);
+    --icon-feedback-positive: var(--ctp-green);
+    --icon-feedback-warning: var(--ctp-yellow);
+    --icon-feedback-critical: var(--ctp-red);
+    --icon-feedback-info: var(--ctp-sky);
+
+    /* Legacy aliases retained for older Vesktop/Discord builds. */
+    --background-primary: var(--ctp-base);
+    --background-secondary: var(--ctp-mantle);
+    --background-tertiary: var(--ctp-crust);
+    --background-floating: var(--ctp-mantle);
+    --background-modifier-hover: color-mix(in srgb, var(--ctp-surface2) 15%, transparent);
+    --background-modifier-active: color-mix(in srgb, var(--ctp-surface2) 25%, transparent);
+    --background-modifier-selected: color-mix(in srgb, var(--ctp-surface2) 35%, transparent);
+    --background-modifier-accent: var(--ctp-surface0);
+    --header-primary: var(--ctp-text);
+    --header-secondary: var(--ctp-subtext0);
+    --text-normal: var(--ctp-text);
+    --interactive-normal: var(--ctp-subtext1);
+    --interactive-hover: var(--ctp-text);
+    --interactive-active: var(--ctp-text);
+    --brand-experiment: var(--ctp-accent);
+    --brand-experiment-560: color-mix(in srgb, var(--ctp-accent), var(--ctp-crust) 16%);
+    --input-background: var(--ctp-crust);
+}
