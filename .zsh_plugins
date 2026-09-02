@@ -15,7 +15,6 @@ Aloxaf/fzf-tab
 # zsh-users Plugins
 zsh-users/zsh-completions path:src kind:fpath
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
 
 # Plugins Loaded Last
 zsh-users/zsh-syntax-highlighting

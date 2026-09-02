@@ -28,9 +28,7 @@ if (( $+commands[atuin] )); then
         )"
     fi
 
-    export ATUIN_NOBIND=true
     eval "$(atuin init zsh --disable-ai)"
-    unset ATUIN_NOBIND
 
     ZSH_AUTOSUGGEST_STRATEGY=(history)
 fi
@@ -182,10 +180,3 @@ si() {
 
 alias u='sudo apt update;sudo apt upgrade;zsh-update-tools'
 alias i='weechat'
-
-#
-# Keybinds
-#
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
