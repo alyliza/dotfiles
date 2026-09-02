@@ -178,5 +178,6 @@ si() {
 # Aliases
 #
 
-alias u='sudo apt update;sudo apt upgrade;zsh-update-tools'
+alias apt='apt -c "$HOME/.config/apt/apt.conf"'
+alias u='sudo apt -c "$HOME/.config/apt/apt.conf" update; sudo apt -c "$HOME/.config/apt/apt.conf" upgrade; zsh-update-tools'
 alias i='weechat'
