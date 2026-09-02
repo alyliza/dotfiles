@@ -86,8 +86,21 @@ fi
 c() {
     emulate -L zsh
 
-    if (( $# != 1 )) || [[ "$1" != <-> ]] || (( $1 < 1 || $1 > 128 )); then
-        print -u2 'usage: c <1-128>'
+    local count="${1-1}"
+    local skip="${2-0}"
+    local invalid=0
+    case "$count" in
+        ''|*[!0-9]*) invalid=1 ;;
+    esac
+    case "$skip" in
+        ''|*[!0-9]*) invalid=1 ;;
+    esac
+    if (( $# > 2 || invalid )); then
+        print -u2 'usage: c [1-128] [0-128 commands to skip]'
+        return 2
+    fi
+    if (( count < 1 || count > 128 || skip < 0 || skip > 128 )); then
+        print -u2 'usage: c [1-128] [0-128 commands to skip]'
         return 2
     fi
 
@@ -97,7 +110,7 @@ c() {
     fi
 
     local transcript
-    transcript="$(zsh-copy-history "$1")" || return
+    transcript="$(zsh-copy-history "$count" "$skip")" || return
 
     if [[ -n "${WAYLAND_DISPLAY:-}" ]] && (( $+commands[wl-copy] )); then
         print -rn -- "$transcript" | wl-copy || {
@@ -114,7 +127,15 @@ c() {
         return 127
     fi
 
-    print -r -- "Copied $1 command(s) and output."
+    print -r -- "Copied $count command(s) and output."
+}
+
+_open_atuin_search() {
+    if (( ! $+commands[atuin] )); then
+        print -u2 'atuin is not installed'
+        return 127
+    fi
+    ATUIN_SHELL=zsh atuin search --interactive
 }
 
 s() {
@@ -122,8 +143,8 @@ s() {
 
     local query="$*"
     if [[ -z "$query" ]]; then
-        print -u2 'usage: s <search text>'
-        return 2
+        _open_atuin_search
+        return
     fi
 
     local results
@@ -137,6 +158,22 @@ s() {
     }
 
     print -r -- "$results"
+}
+
+si() {
+    emulate -L zsh
+
+    local query="$*"
+    if [[ -z "$query" ]]; then
+        _open_atuin_search
+        return
+    fi
+    if (( ! $+commands[zsh-copy-history] )); then
+        print -u2 'si: zsh-copy-history is not installed'
+        return 127
+    fi
+
+    zsh-copy-history --search "$query"
 }
 
 #
